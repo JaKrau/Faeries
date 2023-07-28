@@ -1,0 +1,39 @@
+body {
+    font-size: 1.75rem;
+    line-height: 1.5;
+    font-family: monospace;
+    background: url(./images/day.png) no-repeat center;
+    background-size: cover;
+    background-color: rgb(149, 64, 3);
+}
+
+.title {
+    text-shadow: -5px 8px 11px rgb(30, 69, 95);
+    text-align: center;
+    margin-bottom: 12vh;
+    font-size: 7rem;
+}
+
+#searchArea {
+    text-align: center;
+}
+
+h2 {
+    width: 15%;
+    margin-left: 43%;
+    font-size: xx-large;
+    background-color: #dfefef;
+}
+
+#searchHistory {
+    width: 15%;
+    margin-left: 43%;
+    font-size: x-large;
+    background-color: #dfefef;
+}
+
+#personalInfo {
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}

@@ -3,15 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css"/>
+    <title>Five Day Forecast</title>
+    <link rel="stylesheet" href="./assests/style.css"/>
 </head>
 <body>
     <header class="header" id="top">
-        <h1 class="name">Five Day Forecast</h1>
+        <h1 class="title">Five Day Forecast</h1>
     </header>
+    <div id="searchArea">
+        <h2>Search By City</h2>
+        <form>
+            <input type="text" id="citySearch" placeholder="Find the forecast"/>
+            <button type="submit">Search</button>
+        </form>
+        <section id="searchHistory">
+            <!--Search items go to localStorage then populate this space via the script-->
+        </section>
+        <main>
+            <section id="todaysWeather">
+                <!--Both weather sections are populated via our api in the script-->
+            </section>
+            <section id="forecastCards">
+                <div id="day1"></div>
+                <div id="day2"></div>
+                <div id="day3"></div>
+                <div id="day4"></div>
+                <div id="day5"></div>
+            </section>
+        </main>
+    </div>
+    
 
-
+    
     <script src="./assests/script.js"></script>
+    <footer id="personalInfo">
+        Some Links Here
+    </footer>
 </body>
 </html>
