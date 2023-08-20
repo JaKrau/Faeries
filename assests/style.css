@@ -1,39 +1,89 @@
+:root {
+   --primaryColor: rgba(238,251,253,255); 
+   --forecastColor: rgba(169,178,175,.4);
+}
+
 body {
-    font-size: 1.75rem;
     line-height: 1.5;
-    font-family: monospace;
-    background: url(./images/day.png) no-repeat center;
-    background-size: cover;
-    background-color: rgb(149, 64, 3);
+    font-size: 1.75rem;
+    background: url(./images/Twilight.png) no-repeat center top 15vh;
+    background-size:auto;
+    background-color: rgb(1, 13, 1);
+    text-align: center;
 }
 
 .title {
-    text-shadow: -5px 8px 11px rgb(30, 69, 95);
-    text-align: center;
-    margin-bottom: 12vh;
+    color: var(--primaryColor);
     font-size: 7rem;
-}
-
-#searchArea {
     text-align: center;
+    margin-top: -2vh;
+    margin-bottom: 12vh;
 }
 
-h2 {
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#h2 {
     width: 15%;
-    margin-left: 43%;
+    margin-bottom: 1%;
+    text-align: center;
     font-size: xx-large;
-    background-color: #dfefef;
+    border-radius: 5px;
+    border-style: outset;
+    border-color: black;
+    background-color: var(--primaryColor);
+}
+
+#citySearch {
+    width: 20%;
+    text-align: center;
+    margin-top: -22vh;
+}
+
+Button {
+    width: 8vw;
+    height: 2vh;
+    background-color: var(--primaryColor);
 }
 
 #searchHistory {
-    width: 15%;
-    margin-left: 43%;
+    width: 7%;
+    margin-top: 1%;
+    margin-left: 4vw;
     font-size: x-large;
-    background-color: #dfefef;
 }
 
-#personalInfo {
-    padding: 10px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
+#todaysWeather {
+    width: 35%;
+    margin-top: -6%;
+    margin-left: 32%;
+    border-radius: 5px;
+    border-style: outset;
+    border-color: black;
+    flex-direction: column;
+    font-size: xxx-large;
+    position: fixed;
+    color: black;
+    background-color: var(--forecastColor);
 }
+
+#forecastCards {
+    display: flex;
+    margin-left: 29vw;
+    position: fixed;
+}
+
+.foreFive {
+    width: 8vw;
+    margin-top: 43vh;
+    border-radius: 5px;
+    border-style: outset;
+    border-color: black;
+    color: black;
+    background-color: var(--forecastColor);
+}
+

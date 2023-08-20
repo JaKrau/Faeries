@@ -7,37 +7,32 @@
     <link rel="stylesheet" href="./assests/style.css"/>
 </head>
 <body>
-    <header class="header" id="top">
-        <h1 class="title">Five Day Forecast</h1>
+    <header>
+        <h1 class="title">Weather Dashboard</h1>
     </header>
+
     <div id="searchArea">
-        <h2>Search By City</h2>
-        <form>
-            <input type="text" id="citySearch" placeholder="Find the forecast"/>
-            <button type="submit">Search</button>
+        <form class="form">
+            <input type="text" id="citySearch" placeholder="Search for a city:"/>
+            <button type="submit" id="searchButton">Search</button>
         </form>
         <section id="searchHistory">
+            <p>Search History</p>
             <!--Search items go to localStorage then populate this space via the script-->
         </section>
-        <main>
-            <section id="todaysWeather">
-                <!--Both weather sections are populated via our api in the script-->
-            </section>
-            <section id="forecastCards">
-                <div id="day1"></div>
-                <div id="day2"></div>
-                <div id="day3"></div>
-                <div id="day4"></div>
-                <div id="day5"></div>
-            </section>
-        </main>
     </div>
+    <main>
+        <section id="todaysWeather">
+            <!--This weather section is populated via our api in the script-->
+        </section>
+        <section id="forecastCards">
+            <!--This weather section is built/populated via the script-->
+        </section>
+    </main>
     
-
     
     <script src="./assests/script.js"></script>
-    <footer id="personalInfo">
-        Some Links Here
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
 </body>
 </html>
