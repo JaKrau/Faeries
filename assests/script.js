@@ -1,4 +1,4 @@
-
+const searchHistory = document.getElementById('searchHistory');
 const citySearch = document.getElementById('citySearch');
 const searchButton = document.getElementById('searchButton');
 const todaysWeather = document.getElementById('todaysWeather');
@@ -18,6 +18,7 @@ let lon;
 let city;
 // Array holding our variables pulled from localStorage
 let searches = new Array();
+let days = new Array();
 
 // Initializing the page 
 // fills the search Array via getHistory
@@ -40,7 +41,7 @@ var searchHistoryContent = () => {
     }
     searchHistory.innerHTML = '';
     for (var i in searches) {
-        var searchHistoryButton = document.createElement('button');
+        let searchHistoryButton = document.createElement('button');
         searchHistoryButton.setAttribute('id', searches[i]);
         searchHistoryButton.innerText = searches[i];
         searchHistory.appendChild(searchHistoryButton);
@@ -84,7 +85,7 @@ let getWeather = async () => {
         todaysWeather.innerHTML = '';
         const todaysWeatherReport = document.createElement('div');
         const cityNameHere = document.createElement('h2');
-        cityNameHere.innerHTML = citySearch.value; 
+        cityNameHere.innerHTML = '<h2>' + city + '</h2>';
         const todaysDate = document.createElement('div');
         todaysDate.innerHTML = date;
         const todaysIcon = document.createElement('img');
@@ -143,6 +144,13 @@ let getWeatherFiveDay = async () => {
             dayDiv.appendChild(thisDaysWindSpeed);
 
             forecastCards.appendChild(dayDiv);
+
+            if (days.length <= 5) {
+                days.push(dayDiv);
+            } else {
+                
+            }
+            
         }
     })
 }
@@ -160,16 +168,17 @@ let geoLoc = async () => {
 
 searchHistory.addEventListener("click", (e) => {
     e.preventDefault();
-    searchHistory.innerHTML = '';
-    historical = e.target;
+    let historical = e.target;
     city = historical.innerText;
+    searchHistory.innerHTML = '';
     geoAPI = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=' + weatherAPI;
+    pageLaunch();
 })
 
 searchButton.addEventListener('click', (e) => {
     e.preventDefault();
     forecastCards.innerHTML = '';
-    city = citySearch.value || X;
+    city = citySearch.value;
     geoAPI = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=' + weatherAPI;
     pageLaunch();
 });
