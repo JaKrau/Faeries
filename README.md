@@ -15,7 +15,7 @@ The site features a search bar, a search history section, and a display area for
 Type a city name into the search bar and hit enter, or click the search button, to see the weather display appear. 
 The cities you search will be stored locally and appear in the search history section, each city appears as a button which you may click to see the weather forecast appear.
   
-   ![site screenshot](/assets/images/ReadMe.png?raw=true "demo")
+   ![site screenshot](https://github.com/JaKrau/Faeries/blob/main/assests/images/ReadMe.png)
    
 Link to deployed site: https://jakrau.github.io/Faeries/
 
