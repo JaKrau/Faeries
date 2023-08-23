@@ -2,7 +2,7 @@
 
 ## Description
 
-I built this weather dashboard so I can search the weather anywhere in the world. 
+I built this weather dashboard so I can search for today's weather and get a five day forecast for any city in the world. 
 
 
 ## Installation
