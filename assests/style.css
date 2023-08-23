@@ -37,7 +37,7 @@ body {
 #searchButton {
     width: 8vw;
     height: 2vh;
-    margin-top: -14%;
+    margin-top: -10%;
     position: absolute;
     background-color: var(--primaryColor);
 }
@@ -46,6 +46,13 @@ button {
     width: 8vw;
     height: 2vh;
     background-color: var(--primaryColor);
+}
+
+h3 {
+    margin-left: 4vw;
+    color: var(--primaryColor);
+    position: absolute;
+    margin-top: -8%;
 }
 
 #searchHistory {
@@ -61,20 +68,13 @@ main {
     justify-content: center;
 }
 
-#h2 {
-    width: 15%;
-    margin-bottom: 1%;
-    text-align: center;
-    font-size: xx-large;
-    border-radius: 5px;
-    border-style: outset;
-    border-color: black;
-    background-color: var(--primaryColor);
+h2 {
+margin-top: -4%;
 }
 
 #todaysWeather {
     width: 35%;
-    margin-top: -6.25%;
+    margin-top: -4.25%;
     border-radius: 5px;
     border-style: outset;
     border-color: black;
@@ -86,11 +86,12 @@ main {
 
 #forecastCards {
     display: inline-flex;
+    margin-top: -4.5%;
 }
 
 .foreFive {
     width: 14vw;
-    height: 22vh;
+    height: 28vh;
     margin-top: 50vh;
     border-radius: 5px;
     border-style: outset;

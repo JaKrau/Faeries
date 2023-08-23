@@ -2,14 +2,16 @@ const searchHistory = document.getElementById('searchHistory');
 const citySearch = document.getElementById('citySearch');
 const searchButton = document.getElementById('searchButton');
 const todaysWeather = document.getElementById('todaysWeather');
+const forecastCards = document.getElementById('forecastCards')
 const day1 = document.getElementById('1');
 const day2 = document.getElementById('2');
 const day3 = document.getElementById('3');
 const day4 = document.getElementById('4');
 const day5 = document.getElementById('5');
 
-todaysWeather.style.visibility = "hidden"
-const weatherAPI = 'e95f8a53e2cdfae989039129c9e5297c'
+
+todaysWeather.style.visibility = "hidden";
+const weatherAPI = 'e95f8a53e2cdfae989039129c9e5297c';
 
 
 let geoAPI;
@@ -25,6 +27,7 @@ let days = new Array();
 // fills the searchHistory html with content from localStorage
 // runs the getWeather functions to fill forecast html
 var pageLaunch = async () => {
+    citySearch.textContent = '';
     searches = getHistory();
     searchHistoryContent(searches);
     [lat, lon] = await geoLoc();
@@ -52,7 +55,7 @@ function addHistory(searches) {
     if (!searches.includes(city)) {
         searches.push(city);
     }
-    localStorage.setItem("history", JSON.stringify(searches))
+    localStorage.setItem("history", JSON.stringify(searches));
     searchHistoryContent(searches);
 }
 
@@ -75,7 +78,6 @@ let getWeather = async () => {
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
         let temp = "Temp: " + Math.round(((data.current.temp)-273.15) * (9/5) + 32) + " " + "°F";
         let humidity = "Humidity: " + data.current.humidity + "%";
         let windSpeed = "Wind Speed: " + data.current.wind_speed + " " + "MPH";
@@ -110,49 +112,31 @@ let getWeather = async () => {
 
 // api call to get 5 day forecast data and display it in forecastCards
 let getWeatherFiveDay = async () => {
-    let forecastFetch = 'https://api.openweathermap.org/data/3.0/onecall?lat=' + lat + '&lon=' + lon + '&appid=' + weatherAPI;
-    await fetch(forecastFetch)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function (data) {
-        for (let index = 1; index < 6; index++) {
-            let temp = "Temp: " +  Math.round(((data.daily[index].temp.day)-273.15) * (9/5) + 32);
-            let humidity = "Humidity: " + data.daily[index].humidity;
-            let windSpeed = "Wind Speed: " + data.daily[index].wind_speed;
-            let date = "Date: " + dayjs.unix(data.daily[index].dt).format('M/D/YYYY');
-            let icon = data.daily[index].weather[0].icon;
-
-            const dayDiv = document.createElement('div');
-            dayDiv.setAttribute('class', 'foreFive');
+    const fiveDayFetch = 'https://api.openweathermap.org/data/3.0/onecall?lat=' + lat + '&lon=' + lon + '&appid=' + weatherAPI;
+    await fetch(fiveDayFetch)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function (data) {
+            for (let index = 1; index < 6; index++) {
+                let temp = "Temp: " +  Math.round(((data.daily[index].temp.day)-273.15) * (9/5) + 32);
+                let humidity = "Humidity: " + data.daily[index].humidity;
+                let windSpeed = "Wind Speed: " + data.daily[index].wind_speed;
+                let date = "Date: " + dayjs.unix(data.daily[index].dt).format('M/D/YYYY');
+                let icon = data.daily[index].weather[0].icon;
             
-            const thisDaysDate = document.createElement('div');
-            thisDaysDate.innerHTML = date;
-            const thisDaysIcon = document.createElement('img');
-            thisDaysIcon.setAttribute('src', `http://openweathermap.org/img/wn/` + icon + `@2x.png`);
-            const thisDaysTemp = document.createElement('div');
-            thisDaysTemp.innerHTML = temp;
-            const thisDaysHumidity = document.createElement('div');
-            thisDaysHumidity.innerHTML = humidity;
-            const thisDaysWindSpeed = document.createElement('div');
-            thisDaysWindSpeed.innerHTML = windSpeed;
-
-            dayDiv.appendChild(thisDaysDate);
-            dayDiv.appendChild(thisDaysIcon);
-            dayDiv.appendChild(thisDaysTemp);
-            dayDiv.appendChild(thisDaysHumidity);
-            dayDiv.appendChild(thisDaysWindSpeed);
-
-            forecastCards.appendChild(dayDiv);
-
-            if (days.length <= 5) {
-                days.push(dayDiv);
-            } else {
-                
+                const weatherCard = document.createElement('span');
+                weatherCard.setAttribute('class', 'foreFive');
+                weatherCard.setAttribute('id', 'cards');
+                weatherCard.innerHTML = 
+                    '<div>' + date + '</div>' +
+                    '<img src="https://openweathermap.org/img/wn/' + icon + '@2x.png" />' +
+                    '<div>'+ temp +'</div>' +
+                    '<div>'+ windSpeed +'mph</div>' + 
+                    '<div>'+ humidity +'%</div>'
+                forecastCards.appendChild(weatherCard);
             }
-            
-        }
-    })
+        })
 }
 
 // api call to turn a city name into it's geographic coordinates 
@@ -168,6 +152,7 @@ let geoLoc = async () => {
 
 searchHistory.addEventListener("click", (e) => {
     e.preventDefault();
+    forecastCards.innerHTML = '';
     let historical = e.target;
     city = historical.innerText;
     searchHistory.innerHTML = '';
